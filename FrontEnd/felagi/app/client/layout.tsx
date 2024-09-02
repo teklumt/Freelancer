@@ -25,11 +25,13 @@ export default function RootLayout({
           </div>
         </html>
       </SignedIn>
-      <SignInButton>
-        <Button variant={"outline"} asChild>
-          <Link href="./client">SigIn to Continue</Link>
-        </Button>
-      </SignInButton>
+      <SignedOut>
+        <SignInButton>
+          <Button variant={"outline"} asChild>
+            <Link href="./client">SigIn to Continue</Link>
+          </Button>
+        </SignInButton>
+      </SignedOut>
     </>
   );
 }

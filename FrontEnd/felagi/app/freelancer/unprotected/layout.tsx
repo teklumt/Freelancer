@@ -1,4 +1,4 @@
-import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { SignedOut, SignedIn } from "@clerk/nextjs";
 import Navbar from "./components/Navbar";
 
 export default function RootLayout({
@@ -9,15 +9,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="p-4">
-        <SignedOut>
-          <header className="w-full">
-            <Navbar></Navbar>
-          </header>
-          <main>{children}</main>
-        </SignedOut>
-        <SignedIn>
-          <main>{children}</main>
-        </SignedIn>
+        <header className="w-full">
+          <Navbar></Navbar>
+        </header>
+        <main>{children}</main>
       </body>
     </html>
   );

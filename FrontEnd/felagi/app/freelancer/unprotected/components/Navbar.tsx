@@ -1,10 +1,26 @@
-import React from "react";
+"use client";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignOutButton,
+  useAuth,
+} from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
-import { Bell, Plus } from "lucide-react";
 import Link from "next/link";
-import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import Image from "next/image";
 const Navbar = () => {
+  const { isSignedIn } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isSignedIn) {
+      router.push("/freelancer/protected");
+    }
+  }, [isSignedIn, router]);
   return (
     <div className="flex gap-4 p-4 border-b justify-between">
       <div className="flex gap-10">
@@ -32,11 +48,14 @@ const Navbar = () => {
         <div>
           <SignedOut>
             <SignInButton>
-              <Button variant={"secondary"}>
-                Sign In
-              </Button>
+              <Button variant={"secondary"}>Sign In</Button>
             </SignInButton>
           </SignedOut>
+          <SignedIn>
+            <SignOutButton>
+              <Button variant={"secondary"}>Sign Out</Button>
+            </SignOutButton>
+          </SignedIn>
         </div>
       </div>
     </div>

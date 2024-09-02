@@ -1,11 +1,12 @@
-import { SignedIn } from '@clerk/nextjs'
-import React from 'react'
-const page = () => {
-  return (
-    <div>
-      UnProtected Pages
-    </div>
-  )
-}
+import { SignedIn, SignedOut } from "@clerk/nextjs";
+import React, { useEffect } from "react";
 
-export default page
+const Page = () => {
+  return (
+    <>
+        <div>unprotected pages</div>
+    </>
+  );
+};
+
+export default Page;

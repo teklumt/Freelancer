@@ -19,6 +19,7 @@ import {
   Users,
 } from "lucide-react";
 import Link from "next/link";
+import { UserProfile } from "@clerk/nextjs";
 
 const Sidebar = () => {
   const menuList = [
@@ -83,6 +84,7 @@ const Sidebar = () => {
           header="John Doe"
           text="john.doe@example.com"
         />
+        {/* <UserProfile></UserProfile> */}
       </div>
       <div>
         <Command>
