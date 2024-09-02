@@ -10,28 +10,19 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <SignedIn>
-        <html lang="en">
-          <div className="flex justify-between items-start">
-            <aside>
-              <Sidebar></Sidebar>
-            </aside>
-            <main className="flex flex-col w-full h-full pl-[300px]">
-              <header>
-                <Navbar></Navbar>
-              </header>
-              <div className="">{children}</div>
-            </main>
-          </div>
-        </html>
-      </SignedIn>
-      <SignedOut>
-        <SignInButton>
-          <Button variant={"outline"} asChild>
-            <Link href="./client">SigIn to Continue</Link>
-          </Button>
-        </SignInButton>
-      </SignedOut>
+      <html lang="en">
+        <div className="flex justify-between items-start">
+          <aside>
+            <Sidebar></Sidebar>
+          </aside>
+          <main className="flex flex-col w-full h-full pl-[300px]">
+            <header>
+              <Navbar></Navbar>
+            </header>
+            <div className="">{children}</div>
+          </main>
+        </div>
+      </html>
     </>
   );
 }

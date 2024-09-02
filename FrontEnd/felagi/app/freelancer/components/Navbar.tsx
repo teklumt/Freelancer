@@ -1,20 +1,25 @@
-"use client"
+"use client";
 import UserItem from "./UserItem";
 import { Button } from "@/components/ui/button";
 import { Bell, Plus } from "lucide-react";
 import Link from "next/link";
 import { SignedIn, SignOutButton, useAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 const Navbar = () => {
   const { isSignedIn } = useAuth();
+  const [loader, setLoader] = useState(true)
   const router = useRouter();
 
   useEffect(() => {
     if (isSignedIn) {
       router.push("/freelancer/protected");
     }
+    setLoader(false)
   }, [isSignedIn, router]);
+  if(loader){
+    return <div>Loading...</div>
+  }
   return (
     <div className="flex gap-4 p-4 border-b justify-between">
       <div>
@@ -42,11 +47,11 @@ const Navbar = () => {
             </Button>
           </SignOutButton>
         </div>
-        <SignedIn>
-          <SignOutButton>
-            <Button variant={"secondary"}>Sign Out</Button>
-          </SignOutButton>
-        </SignedIn>
+        <SignOutButton>
+          <Button variant={"secondary"}>
+            <Link href="/freelancer/unprotected">Sign Out</Link>
+          </Button>
+        </SignOutButton>
       </div>
     </div>
   );
